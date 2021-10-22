@@ -1,0 +1,13 @@
+pathway_name                    :sample pathways0001
+parameters                      :ECFP,10,0.2,[0, 0, 0]
+max_levels                      :6
+max_values                      :[0, 0, 0, 0]
+bin_adjs                        :[0.0, 0.0, 0.0]
+sub_smiles                      :['O=P(O)(O)OCC1OC(O)C(O)C(O)C1O']
+target_smiles                   :['CC(=O)C(=O)O']
+time of reaction computation    :12.919713973999023
+time of pathway reconstruction  :0.04801058769226074
+number of pathways found        :748
+shortest length of pathways     :5
+number of shortest pathways     :35
+number of selected pathways     :148
