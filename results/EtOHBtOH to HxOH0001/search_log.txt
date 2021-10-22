@@ -1,0 +1,13 @@
+pathway_name                    :EtOHBtOH to HxOH0001
+parameters                      :ECFP,10,0.2,[2, 2, 2]
+max_levels                      :6
+max_values                      :[3, 3, 3, 3]
+bin_adjs                        :[0, 0, 0]
+sub_smiles                      :['CCO', 'CCCCO']
+target_smiles                   :['CCCCCCO']
+time of reaction computation    :9.541071653366089
+time of pathway reconstruction  :0.026007413864135742
+number of pathways found        :16
+shortest length of pathways     :5
+number of shortest pathways     :2
+number of selected pathways     :0
