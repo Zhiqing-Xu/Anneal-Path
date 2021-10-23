@@ -8,8 +8,10 @@ Simulated Annealing-based branched novel biochemical pathway prediction tool
 > For using RDKit in Jupyter Notebooks, `conda install -n rdkit3 nb_conda_kernels`.
 
 > Activating the conda environment, `conda activate rdkit3` and install other required packages using `pip` or `conda`
-```conda activate rdkit3```
-
+```
+conda activate rdkit3
+```
+>
 
 ```
 pip install pymysql
