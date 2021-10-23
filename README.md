@@ -13,7 +13,6 @@ pip install pymysql
 ```
 
 ## Change Path to R in AP_output.py 
-Change Path to R in AP_output.py for generating graphical output of the program,
-```
-R_path=["C:\\R\\R-4.1.1\\bin\\Rscript.exe", "/usr/lib/R/bin/exec/R"][0]
-```
+Change Path to R in AP_output.py line301 for generating graphical output of the program,
+`R_path="/bin/R"` or `"C:\\R\\R-4.1.1\\bin\\Rscript.exe"`
+
