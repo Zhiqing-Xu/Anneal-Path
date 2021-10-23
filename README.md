@@ -1,4 +1,5 @@
 # Anneal-Path
+
 Simulated Annealing-based branched novel biochemical pathway prediction tool
 
 ## Quick Installation of Environment
@@ -13,6 +14,8 @@ pip install pymysql
 ```
 
 ## Change Path to R in AP_output.py 
+
 Change Path to R in AP_output.py line301 for generating graphical output of the program, 
+
 e.g., `R_path="/bin/R"` or `"C:\\R\\R-4.1.1\\bin\\Rscript.exe"`
 
