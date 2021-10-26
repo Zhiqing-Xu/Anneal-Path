@@ -11,6 +11,7 @@ Simulated Annealing-based branched novel biochemical pathway prediction tool
 > Activating the conda environment, `conda activate rdkit3` and install other required packages using `pip` or `conda`,
 ```
 pip install pymysql
+pip install tqdm
 ```
 
 ## Change Path to R in AP_output.py 
