@@ -1,0 +1,13 @@
+pathway_name                    :Glycolate_to_Glucose0004
+parameters                      :ECFP,10,0.2,[0, 0, 0]
+max_levels                      :5
+max_values                      :[1, 1, 0, 0]
+bin_adjs                        :[0, 0, 0]
+sub_smiles                      :['O=C(O)CO']
+target_smiles                   :['OCC1OC(O)C(O)C(O)C1O']
+time of reaction computation    :7.971807241439819
+time of pathway reconstruction  :0.022005319595336914
+number of pathways found        :349
+shortest length of pathways     :4
+number of shortest pathways     :2
+number of selected pathways     :2

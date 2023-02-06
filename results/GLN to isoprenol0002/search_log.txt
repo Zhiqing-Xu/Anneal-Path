@@ -1,0 +1,13 @@
+pathway_name                    :GLN to isoprenol0002
+parameters                      :ECFP,10,0.2,[0, 0, 0]
+max_levels                      :7
+max_values                      :[1, 1, 1, 1]
+bin_adjs                        :[0.2, 0.2, 0.2]
+sub_smiles                      :['NC(=O)CCC(N)C(=O)O']
+target_smiles                   :['C=C(C)CCO']
+time of reaction computation    :164.75871586799622
+time of pathway reconstruction  :1.3566784858703613
+number of pathways found        :40
+shortest length of pathways     :7
+number of shortest pathways     :40
+number of selected pathways     :0
