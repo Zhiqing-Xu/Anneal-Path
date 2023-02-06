@@ -32,8 +32,7 @@ conda install -n rdkit3 nb_conda_kernels
 
 - Other packages, 
 ```
-pip install pymysql
-pip install tqdm
+pip install pymysql tqdm
 ```
 
 
