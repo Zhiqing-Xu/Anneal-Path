@@ -1,0 +1,23 @@
+{
+  "nodes": [
+    {"id": "F6P", "group": 0},
+    {"id": "DAHP", "group": 6},
+    {"id": "PEP", "group": 5},
+    {"id": "2PG", "group": 4},
+    {"id": "X5P", "group": 3},
+    {"id": "E4P", "group": 3},
+    {"id": "3PG", "group": 3},
+    {"id": "GA3P", "group": 2},
+    {"id": "DHAP", "group": 2},
+    {"id": "F16bP", "group": 1}
+  ],
+  "links": [
+    {"source": [ "E4P", "PEP" ],"target": [ "DAHP" ],"value": 0},
+    {"source": [ "2PG" ],"target": [ "PEP" ],"value": 0},
+    {"source": [ "3PG" ],"target": [ "2PG" ],"value": 0},
+    {"source": [ "GA3P", "F6P" ],"target": [ "E4P", "X5P" ],"value": 0},
+    {"source": [ "GA3P" ],"target": [ "3PG" ],"value": 0},
+    {"source": [ "F16bP" ],"target": [ "GA3P", "DHAP" ],"value": 0},
+    {"source": [ "F6P" ],"target": [ "F16bP" ],"value": 0}
+  ]
+}
