@@ -1,0 +1,51 @@
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
+library(hypergraph)
+library(hyperdraw)
+
+DHE0000 <- DirectedHyperedge(c("(S)-Mevalonate"), c("C=C(C)CCO"), "EC4.1.1_0")
+DHE0001 <- DirectedHyperedge(c("Mevaldate"), c("(S)-Mevalonate"), "EC1.1.1_0")
+DHE0002 <- DirectedHyperedge(c("Acetaldehyde","Acetoacetate"), c("Mevaldate"), "EC4.1.2_0")
+DHE0003 <- DirectedHyperedge(c("NC(=O)CC(=O)CC(=O)O"), c("Carbamate","Acetoacetate"), "EC3.7.1_0")
+DHE0004 <- DirectedHyperedge(c("NC(=O)CC(=O)CC=O"), c("NC(=O)CC(=O)O","Acetaldehyde"), "EC3.7.1_1")
+DHE0005 <- DirectedHyperedge(c("NC(=O)CC(=O)CC(=O)O"), c("NC(=O)CC(=O)CC=O"), "EC1.2.1_0")
+DHE0006 <- DirectedHyperedge(c("NC(=O)CC(N)CC(=O)O"), c("NC(=O)CC(=O)CC(=O)O"), "EC1.4.1_0")
+DHE0007 <- DirectedHyperedge(c("Glutamine"), c("NC(=O)CC(N)CC(=O)O"), "EC5.4.3_0")
+DHE0008 <- DirectedHyperedge(c("NC(=O)CC(N)CC=O"), c("NC(=O)CC(=O)CC=O"), "EC1.4.1_1")
+DHE0009 <- DirectedHyperedge(c("NC(=O)CC(N)CC(=O)O"), c("NC(=O)CC(N)CC=O"), "EC1.2.1_1")
+DHE0010 <- DirectedHyperedge(c("3-Oxobutanamide"), c("Acetoacetate"), "EC3.5.1_0")
+DHE0011 <- DirectedHyperedge(c("NC(=O)CC(=O)CC(=O)O"), c("HCO3-","3-Oxobutanamide"), "EC6.4.1_0")
+DHE0012 <- DirectedHyperedge(c("NC(=O)CC(=O)CC(=O)O"), c("3-Oxobutanamide"), "EC4.1.2_1")
+DHE0013 <- DirectedHyperedge(c("CC(N)CC(=O)O"), c("Acetoacetate"), "EC1.4.1_2")
+DHE0014 <- DirectedHyperedge(c("NC(=O)CC(N)CC(=O)O"), c("CC(N)CC(=O)O","Carbamate"), "EC3.7.1_2")
+DHE0015 <- DirectedHyperedge(c("3-Aminopentanedioate"), c("HCO3-","CC(N)CC(=O)O"), "EC3.7.1_3")
+DHE0016 <- DirectedHyperedge(c("NC(=O)CC(N)CC(=O)O"), c("3-Aminopentanedioate"), "EC3.5.1_1")
+DHE0017 <- DirectedHyperedge(c("Glutamate"), c("3-Aminopentanedioate"), "EC5.4.3_1")
+DHE0018 <- DirectedHyperedge(c("Glutamine"), c("Glutamate"), "EC3.5.1_2")
+DHE0019 <- DirectedHyperedge(c("4-Aminobutanoate"), c("CC(N)CC(=O)O"), "EC5.4.3_2")
+DHE0020 <- DirectedHyperedge(c("NCCCC(N)=O"), c("4-Aminobutanoate"), "EC3.5.1_3")
+DHE0021 <- DirectedHyperedge(c("Glutamine"), c("NCCCC(N)=O"), "EC4.1.2_2")
+DHE0022 <- DirectedHyperedge(c("Glutamate"), c("4-Aminobutanoate"), "EC4.1.2_3")
+DHE0023 <- DirectedHyperedge(c("3-Aminopentanedioate"), c("CC(N)CC(=O)O"), "EC4.1.1_1")
+DHE0024 <- DirectedHyperedge(c("C=C(C)CC=O"), c("C=C(C)CCO"), "EC1.1.1_1")
+DHE0025 <- DirectedHyperedge(c("Mevaldate"), c("C=C(C)CC=O"), "EC4.1.1_2")
+Cnodes <- c("(S)-Mevalonate","C=C(C)CCO","Mevaldate","Acetaldehyde","Acetoacetate","NC(=O)CC(=O)CC(=O)O","Carbamate","NC(=O)CC(=O)CC=O","NC(=O)CC(=O)O","NC(=O)CC(N)CC(=O)O","Glutamine","NC(=O)CC(N)CC=O","3-Oxobutanamide","HCO3-","CC(N)CC(=O)O","3-Aminopentanedioate","Glutamate","4-Aminobutanoate","NCCCC(N)=O","C=C(C)CC=O")
+Rnodes <- list(DHE0000,DHE0001,DHE0002,DHE0003,DHE0004,DHE0005,DHE0006,DHE0007,DHE0008,DHE0009,DHE0010,DHE0011,DHE0012,DHE0013,DHE0014,DHE0015,DHE0016,DHE0017,DHE0018,DHE0019,DHE0020,DHE0021,DHE0022,DHE0023,DHE0024,DHE0025)
+hg <- Hypergraph(Cnodes,Rnodes)
+hgbph <- graphBPH(hg)
+testrabph <- graphLayout(hgbph)
+edgeDataDefaults(testrabph, "lwd") <- 1
+edgeDataDefaults(testrabph, "color") <- "black"
+nodeDataDefaults(testrabph, "margin") <- 'unit(1, "mm")'
+nodeDataDefaults(testrabph, "shape") <- "box"
+nodeDataDefaults(testrabph, "color") <- "black"
+#plot(testrabph)
+initial.options <- commandArgs(trailingOnly = FALSE)
+file.arg.name <- "--file="
+script.name <- sub(file.arg.name, "", initial.options[grep(file.arg.name, initial.options)])
+script.basename <- dirname(script.name)
+other.name <- file.path(script.basename, "")
+save_path<-paste(other.name,"/pathways/pathway","0.png",sep="")
+png(file = save_path, width = 3840, height = 2160, res = 300)
+plot(testrabph)
+dev.off()

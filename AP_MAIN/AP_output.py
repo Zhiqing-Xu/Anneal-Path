@@ -135,6 +135,7 @@ def write_search_log(pathway_name,fp_type_global,T0_global,XI_global,P0_global,m
 def run_r_plot(zpathways, zpathways_selected, pathway_name, plot_type):
 
     if plot_type== "selected_unlimited" or plot_type == "all" or plot_type == "selected" or plot_type == "novel":
+
         if plot_type == "selected_unlimited":
             r_plot_pwy(zpathways_selected, pathway_name, "pwyr", 2)
             for one_pwy in zpathways_selected:
@@ -145,7 +146,7 @@ def run_r_plot(zpathways, zpathways_selected, pathway_name, plot_type):
             count_x=0
             for one_pwy in zpathways_selected:
                 count_x+=1
-                if count_x<=20:
+                if count_x<=100:
                     r_plot_pwy([one_pwy], pathway_name, "pwyr", 1)
 
         elif plot_type == "novel":
@@ -153,8 +154,9 @@ def run_r_plot(zpathways, zpathways_selected, pathway_name, plot_type):
             count_x=0
             for one_pwy in zpathways:
                 count_x+=1
-                if count_x<=20:
+                if count_x<=100:
                     r_plot_pwy([one_pwy], pathway_name, "pwyr", 1)
+
         else:
             r_plot_pwy(zpathways, pathway_name, "pwyr", 2)
             for one_pwy in zpathways:
@@ -302,10 +304,11 @@ def r_plot_pwy(pathways_list, pathway_name, r_plot_name, r_plot_type):
     #--------------------------------------------------#
     text_file.close()
     # ============================================================================================================================ #
-    R_path=["C:\\R\\R-4.1.1\\bin\\Rscript.exe", "/usr/lib/R/bin/exec/R"][0]
+    R_path=["C:\\R\\R-4.2.2\\bin\\Rscript.exe", "/usr/lib/R/bin/exec/R"][0]
     R_script_path=str(pathlib.Path(__file__).parent.parent.absolute())+"\\results\\"+pathway_name+"\\pwy_r\\"+ r_plot_name + str4 + ".r"
     print("\""+R_path+"\" \""+R_script_path+"\"")
-    subprocess_R_output = subprocess.check_output("\""+R_path+"\" \""+R_script_path+"\"")
+    #subprocess_R_output = subprocess.check_output("\"" + R_path + "\"" + " \""+R_script_path+"\"")
+    subprocess_R_output = subprocess.check_output(R_path + " \""+R_script_path+"\"")
     # ============================================================================================================================ #
     return
 
