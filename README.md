@@ -6,10 +6,10 @@ Simulated Annealing-based branched novel biochemical pathway prediction tool
 
 
 - Clone the repo to your device you would like to run Anneal-Path, (requires git installed)
-```
-git clone https://github.com/LMSE/Anneal-Path.git
-cd Anneal-Path
-```
+  ```
+  git clone https://github.com/LMSE/Anneal-Path.git
+  cd Anneal-Path
+  ```
 
 
 - Create a conda environment for RDkit, 
