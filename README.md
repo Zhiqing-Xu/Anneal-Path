@@ -1,6 +1,6 @@
 # Anneal-Path v5.02
 
-Anneal-Path is A Simulated Annealing-based branched novel biochemical pathway prediction tool. [See Publication](https://pubs.acs.org/doi/10.1021/acs.iecr.1c02211)
+Anneal-Path is a simulated annealing-based branched novel biochemical pathway prediction tool. [See Publication](https://pubs.acs.org/doi/10.1021/acs.iecr.1c02211)
 
 
 
