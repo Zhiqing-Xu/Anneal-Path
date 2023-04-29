@@ -1,0 +1,40 @@
+DHEXXXX <- DirectedHyperedge(c("G6P"), c("F6P"), "RXXXX")
+
+
+
+#plot(hgbph)
+
+
+testrabph <- graphLayout(hgbph)
+edgeDataDefaults(testrabph, "lwd") <- 1
+edgeDataDefaults(testrabph, "color") <- "black"
+
+
+nodeDataDefaults(testrabph, "margin") <- 'unit(-3, "mm")'
+nodeDataDefaults(testrabph, "shape") <- "circle"
+nodeDataDefaults(testrabph, "color") <- "transparent"
+
+nodeData(testrabph, c("F6P"), "color") <- "black"
+nodeData(testrabph, c("F6P"), "margin") <- 'unit(2, "mm")'
+nodeData(testrabph, c("E4P"), "margin") <- 'unit(-1, "mm")'
+
+plot(testrabph)
+
+
+png(file = "mygraphic.png", width = 1920 * 2, height = 1080 * 2, res = 300)
+plot(testrabph)
+dev.off()
+
+
+###########################
+#plot(hgbph)
+testrabph <- graphLayout(hgbph)
+edgeDataDefaults(testrabph, "lwd") <- 1.5
+edgeDataDefaults(testrabph, "color") <- "black"
+nodeDataDefaults(testrabph, "margin") <- 'unit(-4, "mm")'
+nodeDataDefaults(testrabph, "shape") <- "circle"
+nodeDataDefaults(testrabph, "color") <- "transparent"
+plot(testrabph)
+png(file = "mygraphic.png", width = 1920 * 2, height = 1080 * 2, res = 300)
+plot(testrabph)
+dev.off()

@@ -1,0 +1,3 @@
+List of files larger than 100MB 
+C:\Users\cesiu\Desktop\github_all\Git_Anneal-Path\.git\objects\pack\pack-00df4ff11af993087258c71f0ba98b28b16130dc.pack 
+C:\Users\cesiu\Desktop\github_all\Git_Anneal-Path\AP_MAIN\rules\MNX_fwd_img.zip 

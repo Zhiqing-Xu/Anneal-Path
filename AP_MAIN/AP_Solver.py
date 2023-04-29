@@ -841,7 +841,7 @@ class AnnealPath:
         # -1. If last prod level, no need for screening or selecting compounds for next level 
         if prod_level==((max_levels_global)/2) -1:
             print ("last level, skip compound selection.")
-            print ("="*60)
+            print ("="*100)
             bwd_current_accepted_smiles_set=bwd_current_accepted_smiles_set.union(bwd_current_smiles_set)
         else:
         #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
@@ -1600,7 +1600,7 @@ class AnnealPath:
         #######################################################################################################################################
         #####----------Step 1 pathway_searching():  
         # Call the pathway_searching function to search pathways
-        print ("="*60 + '\nStep 1: pathway searching\n')
+        print ("="*100 + '\nStep 1: pathway searching\n')
         time0 = time.time()
         all_lists=[]
         all_lists=self.pathway_searching(starting_cmpds_smiles_list, target_cmpd_smiles_list, max_levels, max_value)
@@ -1610,19 +1610,19 @@ class AnnealPath:
 
         time1 = time.time()-time0
         print ( "Time Elapsed", time.time()-time0)
-        print ('\nStep 1 completed\n' + "="*60 + "\n")
+        print ('\nStep 1 completed\n' + "="*100 + "\n")
 
         #######################################################################################################################################
         #######################################################################################################################################
         #####----------Step 2 pathway_construction():  
         # Call the pathway_construction function to construct pathways
-        print ("*"*60  +'\nStep 2: pathway construction\n')
+        print ("*"*100  +'\nStep 2: pathway construction\n')
         time0 = time.time()
         result_pathways=[]
         result_pathways=self.pathway_construction(all_lists)
         time2 = time.time()-time0
         print ( "Time Elapsed", time.time()-time0)
-        print ('\nStep 2 completed\n' + "*"*60 + "\n")
+        print ('\nStep 2 completed\n' + "*"*100 + "\n")
         result_pathways, CoA_smiles_dict =self.result_pathways_conversion(result_pathways)
         len_result_pathways=len(result_pathways)
         print("Number of pathways found: ", len_result_pathways)
@@ -1639,7 +1639,7 @@ class AnnealPath:
         print "="*80 +'\nStep 2 completed\n' + "="*80
         '''
 
-        print ("="*60 +'\n\nStep 3: network construction\n')
+        print ("="*100 +'\nStep 3: network construction\n')
         time0 = time.time()
 
         print("Skipped for examples.")
@@ -1649,7 +1649,7 @@ class AnnealPath:
         
         time3 = time.time()-time0
         print ( "Time Elapsed", time.time()-time0)
-        print ('\nStep 3 completed\n' + "="*60 + "\n")
+        print ('\nStep 3 completed\n' + "="*100 + "\n")
 
         #######################################################################################################################################
         #######################################################################################################################################
@@ -1689,15 +1689,15 @@ class AnnealPath:
         #######################################################################################################################################
         #######################################################################################################################################
         #####----------Step 5 Plot: 
-        print ("*"*60 +'\n\nStep 5: pathway visulization\n')
+        print ("*"*100 +'\nStep 5: pathway visulization\n')
         time0 = time.time()
 
-        num_selected_pwys,zpathways,zpathways_selected = output_zpathways(result_pathways, KEGG_nme_canonical_SMILES_dict, trfm_odict, CoA_cmpd_list, pathway_name, CoA_smiles_dict)
+        num_selected_pwys,zpathways,zpathways_selected=output_zpathways(result_pathways, KEGG_nme_canonical_SMILES_dict, trfm_odict, CoA_cmpd_list, pathway_name, CoA_smiles_dict)
         run_r_plot(zpathways, zpathways_selected, pathway_name, plot_type)
 
         time4 = time.time()-time0
         print ( "Time Elapsed", time.time()-time0)
-        print ('\nStep 5 completed\n' + "*"*60+ "\n")
+        print ('\nStep 5 completed\n' + "*"*100+ "\n")
 
 
 
