@@ -47,8 +47,6 @@ from rdkit.Chem.Fingerprints import FingerprintMols
 #--------------------------------------------------#
 from AP_Solver import * 
 from AP_funcs import multipletrialnames
-
-
 #######################################################################################################################################
 #######################################################################################################################################
 # rxn_db            - reaction rule sets used to expand pathway network, "APrules", "BNICE", "retropath", "Simpheny".
@@ -65,25 +63,21 @@ from AP_funcs import multipletrialnames
 # max_value         - upper bound of size of intermediate compounds (used to screen too large compounds)
 # bin_adj           - multipliers adjust the number of three bins
 # plot_type         - plot only pathways with known compounds / plot all pathways
-#                   - selected_unlimited, - Plot all pathways with exclusively natural intermediate compounds.
-#                   - selected          , - Plot 100 (or other set number) pathways with natural intermediate compounds.
-#                   - novel             , - Plot 100 (or other set number) pathways with novel compounds.
-#                   - all               , - Plot them all. 
 #######################################################################################################################################
 #######################################################################################################################################
-def main_AP(    rxn_db         =  "APrules"                             ,
-                pathway_name   =  "sample pathways"                     ,
-                substrates     =  ["C(C1C(C(C(C(O1)O)O)O)O)OP(=O)(O)O"] ,
-                products       =  ["O=C(C(=O)O)C"]                      ,
-                max_levels     =  6                                     ,
-                pruning_method =  [0,0,0]                               ,
-                fp_type        =  "ECFP"                                ,
-                max_value      =  [0,0,0,0]                             ,
-                bin_adj        =  [0.0,0.0,0.0]                         ,
-                plot_type      =  "selected"                                      
+def main_AP(    rxn_db         =  "APrules",
+                pathway_name   =  "sample pathways",
+                substrates     =  ["C(C1C(C(C(C(O1)O)O)O)O)OP(=O)(O)O"], # G6P
+                products       =  ["O=C(C(=O)O)C"], #PYR
+                max_levels     =  6,
+                pruning_method =  [0,0,0],
+                fp_type        =  "ECFP",
+                max_value      =  [0,0,0,0],
+                bin_adj        =  [0.0,0.0,0.0],
+                plot_type      =  "selected"
             ):
     #============================================================================================================================#
-    APfunc = AnnealPath(outstream = sys.stderr, rxn_diameter = 2, rxn_score_lb = 0, rxn_db = rxn_db)
+    APfunc = AnnealPath(outstream=sys.stderr, rxn_diameter=2, rxn_score_lb=0, rxn_db=rxn_db)
     print( "$"*35 + "  Computing pathway %s  " % pathway_name + "$"*35 + '\n')
     #============================================================================================================================#
     pathway_name = multipletrialnames(pathway_name, num_digits=4)
@@ -97,60 +91,56 @@ def main_AP(    rxn_db         =  "APrules"                             ,
     print('Done solving pathway!')
     #============================================================================================================================#
     return pathway_name
-
-
 #######################################################################################################################################
 #######################################################################################################################################
-def main_test(  rxn_db         =  "APrules"                             ,
-                pathway_name   =  "test_pathway"                        ,
-                substrates     =  ["C(C1C(C(C(C(O1)O)O)O)O)OP(=O)(O)O"] ,
-                products       =  ["O=C(C(=O)O)C"]                      ,
-                max_levels     =  5                                     ,
-                pruning_method =  [1,1,1]                               ,
-                fp_type        =  "ECFP"                                ,
-                max_value      =  [0,0,0,0]                             ,
-                bin_adj        =  [0.0,0.0,0.0]                         ,
-                plot_type      =  "selected"                            ,
-                count_trial    =  1                                     ,
+def main_test(  rxn_db         =  "APrules",
+                pathway_name   =  "test_pathway",
+                substrates     =  ["C(C1C(C(C(C(O1)O)O)O)O)OP(=O)(O)O"], # G6P
+                products       =  ["O=C(C(=O)O)C"], #PYR
+                max_levels     =  5,
+                pruning_method =  [1,1,1],
+                fp_type        =  "ECFP",
+                max_value      =  [0,0,0,0],
+                bin_adj        =  [0.0,0.0,0.0],
+                plot_type      =  "selected",
+                count_trial    =  1
              ):
     for one_trial in range(count_trial):
         main_AP(rxn_db,pathway_name,substrates,products,max_levels,pruning_method,fp_type,max_value,bin_adj,plot_type)
     return
-
-
 #######################################################################################################################################
 #######################################################################################################################################
 def main():
 
     #============================================================================================================================#
-    #main_test(  rxn_db         =  "retropath",
-    #            pathway_name   =  "F6P to DAHP",
-    #            substrates     =  ["C(C(C(C(C(=O)CO)O)O)O)OP(=O)(O)O"], # F6P
-    #            products       =  ["C(C(C(C(COP(=O)(O)O)O)O)O)C(=O)C(=O)O"], #DAHP
-    #            max_levels     =  7,
-    #            pruning_method =  [0,0,0],
-    #            fp_type        =  "ECFP",
-    #            max_value      =  [0,0,0,0],
-    #            bin_adj        =  [0.1,0.1,0.1],
-    #            plot_type      =  "selected",
-    #            count_trial    =  1
+    #main_test(  rxn_db = "retropath",
+    #            pathway_name = "F6P to DAHP",
+    #            substrates = ["C(C(C(C(C(=O)CO)O)O)O)OP(=O)(O)O"], # F6P
+    #            products = ["C(C(C(C(COP(=O)(O)O)O)O)O)C(=O)C(=O)O"], #DAHP
+    #            max_levels = 7,
+    #            pruning_method = [0,0,0],
+    #            fp_type = "ECFP",
+    #            max_value = [0,0,0,0],
+    #            bin_adj = [0.1,0.1,0.1],
+    #            plot_type = "selected",
+    #            count_trial = 1
     #         )
     #============================================================================================================================#
     pathway_result_2 = \
-            main_AP(    rxn_db          =  "APrules"                ,
-                        pathway_name    =  "GLN to isoprenol"       ,
-                        substrates      =  ['C(CC(=O)N)C(C(=O)O)N'] ,
-                        products        =  ['CC(=C)CCO']            ,
-                        max_levels      =  7                        ,
-                        pruning_method  =  [0,0,0]                  ,
-                        fp_type         =  "ECFP"                   ,
-                        max_value       =  [1,1,1,1]                ,
-                        bin_adj         =  [0.2,0.2,0.2]            ,
-                        plot_type       =  "novel"                  ,
+            main_AP(    rxn_db          =  "APrules",
+                        pathway_name    =  "AKG to LYS",
+                        substrates      =  ['O=C(O)C(=O)CCC(=O)O'],
+                        products        =  ['NCCCCC(N)C(=O)O'],
+                        max_levels      =  8,
+                        pruning_method  =  [0,0,0],
+                        fp_type         =  "ECFP",
+                        max_value       =  [1,1,1,1],
+                        bin_adj         =  [0.2,0.2,0.2],
+                        plot_type       =  "selected"
                         )
     plot_result_path = Path("../results/" + pathway_result_2 + "/pwy_r/pathways/")
-    # Image(plot_result_path / 'pathway0.png')
-    # Image(plot_result_path / 'pathway4.png')
+    Image(plot_result_path / 'pathway0.png')
+    Image(plot_result_path / 'pathway4.png')
 
 
     #============================================================================================================================#
@@ -193,13 +183,11 @@ def main():
     #============================================================================================================================#
     return
 
-
 #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
 #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
 #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
 if __name__ == '__main__':
     main()
-
 
 #######################################################################################################################################
 #######################################################################################################################################
