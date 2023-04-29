@@ -1,4 +1,4 @@
-# Anneal-Path
+# Anneal-Path v5.02
 
 Simulated Annealing-based branched novel biochemical pathway prediction tool. [See Publication](https://pubs.acs.org/doi/10.1021/acs.iecr.1c02211)
 
