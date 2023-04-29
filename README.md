@@ -1,6 +1,6 @@
 # Anneal-Path
 
-Simulated Annealing-based branched novel biochemical pathway prediction tool
+Simulated Annealing-based branched novel biochemical pathway prediction tool. [See Publication](https://pubs.acs.org/doi/10.1021/acs.iecr.1c02211)
 
 
 
